@@ -1,4 +1,7 @@
+class_name TilePlay
 extends Node2D
+
+signal move_player(pos)
 
 enum ValidCell {
 	Player = 0,
@@ -13,7 +16,7 @@ var initial_position := {
 var game_end := false
 
 onready var tile : TileMap = $Map
-onready var player : Actor = $Map/Player
+onready var player : Player = $Map/Player
 onready var player_hp : Label = $Control/PlayerStats/Value
 onready var enemy : Actor = $Map/Enemy
 onready var enemy_hp : Label = $Control/EnemyStats/Value
@@ -21,6 +24,7 @@ onready var win_message: CenterContainer = $Control/CenterContainer
 
 
 func _ready() -> void:
+	connect("move_player", self, "_on_move_player")
 	center_actors()
 
 
@@ -43,6 +47,7 @@ func center_actors() -> void:
 	var cell2 := tile.map_to_world(initial_position["enemy"])
 	
 	player.position = cell
+	player.emit_signal("set_origin", initial_position["player"])
 	enemy.position = cell2
 
 
@@ -64,6 +69,11 @@ func _process(_delta: float) -> void:
 			if valid_cell(cell, ValidCell.Player):
 				player.position = tile.map_to_world(cell)
 		update_life_stats()
+
+
+func _on_move_player(pos: Vector2) -> void:
+	var cell := tile.map_to_world(pos)
+	player.position = cell
 
 
 func _on_Attack_pressed() -> void:

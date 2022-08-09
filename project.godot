@@ -13,9 +13,21 @@ _global_script_classes=[ {
 "class": "Actor",
 "language": "GDScript",
 "path": "res://src/Actor/Actor.gd"
+}, {
+"base": "Actor",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/Actor/Player/Player.gd"
+}, {
+"base": "Node2D",
+"class": "TilePlay",
+"language": "GDScript",
+"path": "res://src/Test/Test.gd"
 } ]
 _global_script_class_icons={
-"Actor": ""
+"Actor": "",
+"Player": "",
+"TilePlay": ""
 }
 
 [application]
