@@ -9,6 +9,7 @@ var move := Vector2.ZERO
 var origin := Vector2.ZERO
 var is_moving : bool = false
 var tile
+# The limits of the 3x3 grid of the player
 var limits := [1, 3]
 
 func _ready() -> void:
@@ -29,8 +30,8 @@ func new_origin(direction : Vector2) -> void:
 	tile.emit_signal("move_player", origin)
 	is_moving = false
 
-func _process(_delta: float) -> void:
-	move = Vector2.ZERO
+
+func snap_move() -> void:
 	# check if we press any of the movements keys to
 	# start calculating the player movement
 	if (
@@ -49,6 +50,13 @@ func _process(_delta: float) -> void:
 			move.y = 1
 		is_moving = true
 		new_origin(move)
+
+
+func _process(_delta: float) -> void:
+	move = Vector2.ZERO
+	snap_move()
+	if Input.is_action_just_pressed("ui_attack"):
+		tile.emit_signal("attack_player")
 
 
 func _on_set_origin(position: Vector2) -> void:

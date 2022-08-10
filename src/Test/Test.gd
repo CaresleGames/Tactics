@@ -2,6 +2,8 @@ class_name TilePlay
 extends Node2D
 
 signal move_player(pos)
+# Called when the player attacks
+signal attack_player()
 
 enum ValidCell {
 	Player = 0,
@@ -25,6 +27,7 @@ onready var win_message: CenterContainer = $Control/CenterContainer
 
 func _ready() -> void:
 	connect("move_player", self, "_on_move_player")
+	connect("attack_player", self, "_on_attack_player")
 	center_actors()
 
 
@@ -65,20 +68,22 @@ func update_life_stats() -> void:
 
 func _process(_delta: float) -> void:
 	if not game_end:
-		var pos : Vector2 = get_local_mouse_position()
-	
-		# Move player in their zone
-		if Input.is_action_just_pressed("ui_click_left"):
-			var cell : Vector2 = tile.world_to_map(pos)
-			if valid_cell(cell, ValidCell.Player):
-				player.position = tile.map_to_world(cell)
 		update_life_stats()
+	else:
+		player.emit_signal("battle_end")
+		enemy.emit_signal("battle_end")
 
 
+# @Signal move_player(pos)
 func _on_move_player(pos: Vector2) -> void:
 	var cell := tile.map_to_world(pos)
 	player.position = cell
 
 
-func _on_Attack_pressed() -> void:
-	enemy.emit_signal("take_damage", 1)
+# @Signal attack_player()
+func _on_attack_player() -> void:
+	var cell_player : Vector2 = tile.world_to_map(player.position)
+	var cell_enemy : Vector2 = tile.world_to_map(enemy.position)
+	if cell_player.y == cell_enemy.y:
+		enemy.emit_signal("take_damage", 1)
+

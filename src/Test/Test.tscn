@@ -65,14 +65,6 @@ margin_right = 131.0
 margin_bottom = 87.0
 text = "End"
 
-[node name="Attack" type="Button" parent="Control"]
-anchor_left = 0.233
-anchor_top = 0.85
-anchor_right = 0.45
-anchor_bottom = 0.975
-margin_left = 0.079998
-text = "Attack"
-
 [node name="Defense" type="Button" parent="Control"]
 anchor_left = 0.6
 anchor_top = 0.85
@@ -114,5 +106,3 @@ margin_left = 24.0
 margin_right = 64.0
 margin_bottom = 14.0
 text = "0"
-
-[connection signal="pressed" from="Control/Attack" to="." method="_on_Attack_pressed"]
