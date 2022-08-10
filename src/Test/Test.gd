@@ -43,14 +43,18 @@ Set the position of the player and the enemy in the center
 of their respective areas
 """
 func center_actors() -> void:
+	# Player center
 	var cell := tile.map_to_world(initial_position["player"])
+	# Enemy center
 	var cell2 := tile.map_to_world(initial_position["enemy"])
 	
 	player.position = cell
 	player.emit_signal("set_origin", initial_position["player"])
 	enemy.position = cell2
 
-
+"""
+Updates the HUD of the player and enemy
+"""
 func update_life_stats() -> void:
 	player_hp.text = str(player.life_current)
 	enemy_hp.text = str(enemy.life_current)
