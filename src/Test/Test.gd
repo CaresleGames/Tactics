@@ -4,6 +4,9 @@ extends Node2D
 signal move_player(pos)
 # Called when the player attacks
 signal attack_player()
+# Called when the player use the defense command
+signal defense_player()
+
 
 enum ValidCell {
 	Player = 0,
@@ -28,6 +31,7 @@ onready var win_message: CenterContainer = $Control/CenterContainer
 func _ready() -> void:
 	connect("move_player", self, "_on_move_player")
 	connect("attack_player", self, "_on_attack_player")
+	connect("defense_player", self, "_on_defense_player")
 	center_actors()
 
 
@@ -87,3 +91,7 @@ func _on_attack_player() -> void:
 	if cell_player.y == cell_enemy.y:
 		enemy.emit_signal("take_damage", 1)
 
+
+# @Signal defense_player()
+func _on_defense_player() -> void:
+	pass
