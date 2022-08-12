@@ -17,6 +17,9 @@ func _ready() -> void:
 	tile = get_node(tile_parent)
 
 
+"""
+Calculates the new position for the origin
+"""
 func new_origin(direction : Vector2) -> void:
 	# Snaps the player in the 3x3 grid of the game
 	if (
@@ -31,6 +34,10 @@ func new_origin(direction : Vector2) -> void:
 	is_moving = false
 
 
+"""
+Check if a key is pressed and the updates the new
+origin position of the player
+"""
 func snap_move() -> void:
 	# check if we press any of the movements keys to
 	# start calculating the player movement

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/tileset.png" type="Texture" id=1]
 [ext_resource path="res://src/Test/Test.gd" type="Script" id=2]
 [ext_resource path="res://src/Actor/Actor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Actor/Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UI/Battle/StatsDisplay/StatsDisplay.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tileset.png 0"
@@ -73,36 +74,10 @@ anchor_bottom = 0.975
 margin_right = -0.0400085
 text = "Defense"
 
-[node name="PlayerStats" type="Control" parent="Control"]
-anchor_right = 0.167
-anchor_bottom = 0.1
-margin_right = -0.0800018
+[node name="PlayerStats" parent="Control" instance=ExtResource( 5 )]
 
-[node name="Hp" type="Label" parent="Control/PlayerStats"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "HP:"
-
-[node name="Value" type="Label" parent="Control/PlayerStats"]
-anchor_right = 1.0
-anchor_bottom = 0.35
-margin_left = 24.0
-margin_right = 24.0
-text = "0"
-
-[node name="EnemyStats" type="Control" parent="Control"]
+[node name="EnemyStats" parent="Control" instance=ExtResource( 5 )]
 anchor_left = 0.833
 anchor_right = 1.0
-anchor_bottom = 0.1
 margin_left = 0.0799866
-
-[node name="Hp" type="Label" parent="Control/EnemyStats"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Hp:"
-
-[node name="Value" type="Label" parent="Control/EnemyStats"]
-margin_left = 24.0
-margin_right = 64.0
-margin_bottom = 14.0
-text = "0"
+margin_right = 0.0

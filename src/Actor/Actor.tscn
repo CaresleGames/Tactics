@@ -4,10 +4,13 @@
 [ext_resource path="res://src/Actor/Actor.gd" type="Script" id=2]
 
 [node name="Actor" type="Node2D"]
-position = Vector2( -48, 0 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.564706, 0.27451, 0.654902, 1 )
 texture = ExtResource( 1 )
 centered = false
+
+[node name="DefenseTime" type="Timer" parent="."]
+
+[connection signal="timeout" from="DefenseTime" to="." method="_on_DefenseTime_timeout"]

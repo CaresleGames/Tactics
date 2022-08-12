@@ -22,9 +22,9 @@ var game_end := false
 
 onready var tile : TileMap = $Map
 onready var player : Player = $Map/Player
-onready var player_hp : Label = $Control/PlayerStats/Value
+onready var player_hp : StatsDisplay = $Control/PlayerStats
 onready var enemy : Actor = $Map/Enemy
-onready var enemy_hp : Label = $Control/EnemyStats/Value
+onready var enemy_hp : StatsDisplay = $Control/EnemyStats
 onready var win_message: CenterContainer = $Control/CenterContainer
 
 
@@ -63,8 +63,8 @@ func center_actors() -> void:
 Updates the HUD of the player and enemy
 """
 func update_life_stats() -> void:
-	player_hp.text = str(player.life_current)
-	enemy_hp.text = str(enemy.life_current)
+	player_hp.set_value(player.life_current)
+	enemy_hp.set_value(enemy.life_current)
 	if enemy.life_current <= 0:
 		win_message.show()
 		game_end = true
@@ -79,12 +79,23 @@ func _process(_delta: float) -> void:
 
 
 # @Signal move_player(pos)
+"""
+This signal is emmited when the player pressed the keys to move,
+the funciton only update the position of the player according
+with the given position
+"""
 func _on_move_player(pos: Vector2) -> void:
 	var cell := tile.map_to_world(pos)
 	player.position = cell
 
 
 # @Signal attack_player()
+"""
+This signal is emitted when the player pressed the attack key.
+The player and enemy row is checked, in case that the player
+and the enemy are in the same row, the signal `take_damage` is
+emmited
+"""
 func _on_attack_player() -> void:
 	var cell_player : Vector2 = tile.world_to_map(player.position)
 	var cell_enemy : Vector2 = tile.world_to_map(enemy.position)
