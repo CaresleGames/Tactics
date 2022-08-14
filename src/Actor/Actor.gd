@@ -7,9 +7,11 @@ signal defending()
 
 export var life : int = 3
 export var time_defense : float = .25
+export var tile_parent : NodePath
 
 var life_current : int = life
 var is_defending := false
+var tile
 
 onready var timer_defense : Timer = $DefenseTime
 onready var sprite : Sprite = $Sprite
@@ -22,7 +24,9 @@ func _ready() -> void:
 	connect("take_damage", self, "_on_take_damage")
 	connect("battle_end", self, "_on_battle_end")
 	connect("defending", self, "_on_defending")
-	
+	tile = get_node(tile_parent)
+
+
 # @Signal take_damage(damage) 
 func _on_take_damage(damage: int) -> void:
 	if is_defending:

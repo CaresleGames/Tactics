@@ -3,18 +3,15 @@ extends Actor
 
 signal set_origin(position)
 
-export var tile_parent : NodePath
-
 var move := Vector2.ZERO
 var origin := Vector2.ZERO
 var is_moving : bool = false
-var tile
+
 # The limits of the 3x3 grid of the player
 var limits := [1, 3]
 
 func _ready() -> void:
 	connect("set_origin", self, "_on_set_origin")
-	tile = get_node(tile_parent)
 
 
 """

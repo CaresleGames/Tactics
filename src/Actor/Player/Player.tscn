@@ -5,7 +5,6 @@
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-tile_parent = NodePath("")
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0.27451, 0.431373, 0.654902, 1 )

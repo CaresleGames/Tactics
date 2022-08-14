@@ -2,6 +2,7 @@ class_name TilePlay
 extends Node2D
 
 signal move_player(pos)
+signal move_enemy(pos)
 # Called when the player attacks
 signal attack_player()
 
@@ -21,7 +22,7 @@ var game_end := false
 onready var tile : TileMap = $Map
 onready var player : Player = $Map/Player
 onready var player_hp : StatsDisplay = $Control/PlayerStats
-onready var enemy : Actor = $Map/Enemy
+onready var enemy : Enemy = $Map/Enemy
 onready var enemy_hp : StatsDisplay = $Control/EnemyStats
 onready var win_message: CenterContainer = $Control/CenterContainer
 
@@ -29,6 +30,7 @@ onready var win_message: CenterContainer = $Control/CenterContainer
 func _ready() -> void:
 	connect("move_player", self, "_on_move_player")
 	connect("attack_player", self, "_on_attack_player")
+	connect("move_enemy", self, "_on_move_enemy")
 	center_actors()
 
 
@@ -76,7 +78,7 @@ func _process(_delta: float) -> void:
 	
 	# @DebugAction
 	if Input.is_action_just_pressed("ui_accept"):
-		enemy.emit_signal("defending")
+		enemy.time_move.start()
 
 
 # @Signal move_player(pos)
@@ -103,3 +105,8 @@ func _on_attack_player() -> void:
 	if cell_player.y == cell_enemy.y:
 		enemy.emit_signal("take_damage", 1)
 
+
+# @Signal move_enemy(pos)
+func _on_move_enemy(pos: Vector2) -> void:
+	var cell := tile.map_to_world(pos)
+	enemy.position = cell
