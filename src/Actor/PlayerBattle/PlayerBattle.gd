@@ -1,4 +1,4 @@
-class_name Player
+class_name PlayerBattle
 extends Actor
 
 signal set_origin(position)

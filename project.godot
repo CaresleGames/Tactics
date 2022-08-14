@@ -14,32 +14,44 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Actor/Actor.gd"
 }, {
+"base": "Area2D",
+"class": "BattleArea",
+"language": "GDScript",
+"path": "res://src/Objects/BattleArea/BattleArea.gd"
+}, {
+"base": "Node2D",
+"class": "BattleZone",
+"language": "GDScript",
+"path": "res://src/Test/BattleZone.gd"
+}, {
 "base": "Actor",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://src/Actor/Enemy/Enemy.gd"
 }, {
-"base": "Actor",
+"base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://src/Actor/Player/Player.gd"
+"path": "res://src/Player/Player.gd"
+}, {
+"base": "Actor",
+"class": "PlayerBattle",
+"language": "GDScript",
+"path": "res://src/Actor/PlayerBattle/PlayerBattle.gd"
 }, {
 "base": "Control",
 "class": "StatsDisplay",
 "language": "GDScript",
 "path": "res://src/UI/Battle/StatsDisplay/StatsDisplay.gd"
-}, {
-"base": "Node2D",
-"class": "TilePlay",
-"language": "GDScript",
-"path": "res://src/Test/Test.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
+"BattleArea": "",
+"BattleZone": "",
 "Enemy": "",
 "Player": "",
-"StatsDisplay": "",
-"TilePlay": ""
+"PlayerBattle": "",
+"StatsDisplay": ""
 }
 
 [application]
@@ -101,6 +113,14 @@ ui_defense={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="world"
+2d_physics/layer_3="battle"
+2d_physics/layer_4="npc"
+2d_physics/layer_5="interactive_objects"
 
 [physics]
 

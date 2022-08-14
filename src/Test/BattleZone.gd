@@ -1,4 +1,4 @@
-class_name TilePlay
+class_name BattleZone
 extends Node2D
 
 signal move_player(pos)
@@ -20,7 +20,7 @@ var initial_position := {
 var game_end := false
 
 onready var tile : TileMap = $Map
-onready var player : Player = $Map/Player
+onready var player : PlayerBattle = $Map/PlayerBattle
 onready var player_hp : StatsDisplay = $Control/PlayerStats
 onready var enemy : Enemy = $Map/Enemy
 onready var enemy_hp : StatsDisplay = $Control/EnemyStats
