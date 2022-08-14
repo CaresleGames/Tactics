@@ -16,11 +16,12 @@ onready var sprite : Sprite = $Sprite
 
 # @DebuVar
 var color_defending := Color(125, 0, 125, 255)
-var color_normal := Color(255, 255, 255, 0)
+var color_normal := Color(255, 255, 255, 255)
 
 func _ready() -> void:
 	connect("take_damage", self, "_on_take_damage")
 	connect("battle_end", self, "_on_battle_end")
+	connect("defending", self, "_on_defending")
 	
 # @Signal take_damage(damage) 
 func _on_take_damage(damage: int) -> void:
@@ -45,3 +46,4 @@ func _on_defending() -> void:
 
 func _on_DefenseTime_timeout() -> void:
 	is_defending = false
+	sprite.modulate = color_normal

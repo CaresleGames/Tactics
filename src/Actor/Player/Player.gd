@@ -64,6 +64,8 @@ func _process(_delta: float) -> void:
 	snap_move()
 	if Input.is_action_just_pressed("ui_attack"):
 		tile.emit_signal("attack_player")
+	if Input.is_action_just_pressed("ui_defense"):
+		emit_signal("defending")
 
 
 func _on_set_origin(position: Vector2) -> void:
