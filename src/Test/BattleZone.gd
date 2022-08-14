@@ -75,7 +75,7 @@ func _process(_delta: float) -> void:
 	else:
 		player.emit_signal("battle_end")
 		enemy.emit_signal("battle_end")
-		get_tree().change_scene("res://src/Maps/WorldTest/WorldTest.tscn")
+		BattleManager.emit_signal("load_battle_data")
 	
 	# @DebugAction
 	if Input.is_action_just_pressed("ui_accept"):

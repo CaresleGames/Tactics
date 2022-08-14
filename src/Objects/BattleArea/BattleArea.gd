@@ -12,8 +12,13 @@ func _ready() -> void:
 
 
 func _on_BattleArea_body_entered(body: Node) -> void:
-#	BattleManager.emit_signal("save_position")
-	print(get_tree().current_scene.filename)
+	var data = {
+		"pos": body.position,
+		"node_name": name,
+		"scene": get_tree().current_scene.filename,
+		"trigger": id
+	}
+	BattleManager.emit_signal("save_battle_data", data)
 	get_tree().change_scene("res://src/Test/BattleZone.tscn")
 
 
