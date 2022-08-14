@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 modulate = Color( 0.631373, 0.254902, 0.403922, 1 )
 collision_mask = 0
 script = ExtResource( 2 )

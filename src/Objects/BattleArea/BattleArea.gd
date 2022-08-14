@@ -1,6 +1,23 @@
 class_name BattleArea
 extends Area2D
 
+signal disabled()
 
-func _on_BattleArea_body_entered(_body: Node) -> void:
+export var id : int = 0
+
+onready var collision : CollisionShape2D = $CollisionShape2D
+
+func _ready() -> void:
+	connect("disabled", self, "_on_disabled")
+
+
+func _on_BattleArea_body_entered(body: Node) -> void:
+#	BattleManager.emit_signal("save_position")
+	print(get_tree().current_scene.filename)
 	get_tree().change_scene("res://src/Test/BattleZone.tscn")
+
+
+# @Signal disabled()
+func _on_disabled() -> void:
+	collision.set_deferred("disabled", true)
+	hide()

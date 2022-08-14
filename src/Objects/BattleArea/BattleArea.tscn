@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
-[node name="BattleArea" type="Area2D"]
+[node name="BattleArea" type="Area2D" groups=["battle_area"]]
 modulate = Color( 1, 0, 0, 1 )
 collision_layer = 4
 monitorable = false

@@ -17,7 +17,7 @@ var initial_position := {
 	"enemy": Vector2(5, 2),
 }
 
-var game_end := false
+var battle_end := false
 
 onready var tile : TileMap = $Map
 onready var player : PlayerBattle = $Map/PlayerBattle
@@ -66,15 +66,16 @@ func update_life_stats() -> void:
 	enemy_hp.set_value(enemy.life_current)
 	if enemy.life_current <= 0:
 		win_message.show()
-		game_end = true
+		battle_end = true
 
 
 func _process(_delta: float) -> void:
-	if not game_end:
+	if not battle_end:
 		update_life_stats()
 	else:
 		player.emit_signal("battle_end")
 		enemy.emit_signal("battle_end")
+		get_tree().change_scene("res://src/Maps/WorldTest/WorldTest.tscn")
 	
 	# @DebugAction
 	if Input.is_action_just_pressed("ui_accept"):

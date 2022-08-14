@@ -7,3 +7,5 @@ The meaning of some symbols used in the godot project code
 `@DebugVar` -> Variables that are only for debug, test propouse
 
 `@DebugAction` -> A piece of code that is only for debug, test propouse
+
+`@Autoload` -> A declaration of an autoload

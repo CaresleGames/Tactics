@@ -59,6 +59,10 @@ _global_script_class_icons={
 config/name="Tactics"
 config/icon="res://icon.png"
 
+[autoload]
+
+BattleManager="*res://src/Autoload/BattleManager.gd"
+
 [display]
 
 window/size/width=240
