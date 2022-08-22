@@ -12,17 +12,30 @@ func _ready() -> void:
 
 
 func _on_BattleArea_body_entered(body: Node) -> void:
+	"""
+	Creates the data needed by the save/load signal from
+	BattleManager
+	"""
+
 	var data = {
 		"pos": body.position,
 		"node_name": name,
 		"scene": get_tree().current_scene.filename,
 		"trigger": id
 	}
+
+	"""
+	Emit the signal to save the battle data and change the
+	to the battle zone
+	"""
 	BattleManager.emit_signal("save_battle_data", data)
 	get_tree().change_scene("res://src/Test/BattleZone.tscn")
 
 
 # @Signal disabled()
+"""
+Disabled the collision of the area and hide the object
+"""
 func _on_disabled() -> void:
 	collision.set_deferred("disabled", true)
 	hide()

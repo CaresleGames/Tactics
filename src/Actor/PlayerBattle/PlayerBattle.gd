@@ -3,11 +3,22 @@ extends Actor
 
 signal set_origin(position)
 
+# For indicates where is going to move the player
 var move := Vector2.ZERO
+
+"""
+The origin variable indicates the previous position
+of the player before moving
+"""
+# @Todo change origin for position_previous
 var origin := Vector2.ZERO
+
 var is_moving : bool = false
 
 # The limits of the 3x3 grid of the player
+"""
+@Same Enemy - (limits_x, limits_y)
+"""
 var limits := [1, 3]
 
 func _ready() -> void:
@@ -32,7 +43,7 @@ func new_origin(direction : Vector2) -> void:
 
 
 """
-Check if a key is pressed and the updates the new
+Check if a key is pressed and then updates the new
 origin position of the player
 """
 func snap_move() -> void:
@@ -64,6 +75,9 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_defense"):
 		emit_signal("defending")
 
-
+@Signal set_origin(position)
+"""
+Updates the value of the variable origin
+"""
 func _on_set_origin(position: Vector2) -> void:
 	origin = position

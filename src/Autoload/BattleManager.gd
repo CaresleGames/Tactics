@@ -20,8 +20,11 @@ signal load_battle_data()
 
 # Name of the node that activate the battle
 var node_name : String
+# The position of the player before trigger the battle
 var pos := Vector2.ZERO
+# The scene that actives the battle
 var scene : String
+# The BattleArea that trigger this
 var trigger : int
 
 func _ready() -> void:
@@ -30,6 +33,9 @@ func _ready() -> void:
 
 
 # @Signal save_battle_data
+"""
+Save the data pased inside the differrents variables
+"""
 func _on_save_battle_data(data:= {}) -> void:
 	pos = data["pos"]
 	node_name = data["node_name"]
@@ -38,6 +44,9 @@ func _on_save_battle_data(data:= {}) -> void:
 
 
 # @Signal load_battle_data
+"""
+Loads the data after the battle ends
+"""
 func _on_load_battle_data() -> void:
 	print(node_name, pos, scene, trigger)
 	var err := get_tree().change_scene(scene)

@@ -108,6 +108,9 @@ func _on_attack_player() -> void:
 
 
 # @Signal move_enemy(pos)
+"""
+@Same - move_player(pos)
+"""
 func _on_move_enemy(pos: Vector2) -> void:
 	var cell := tile.map_to_world(pos)
 	enemy.position = cell

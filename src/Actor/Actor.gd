@@ -6,10 +6,17 @@ signal battle_end()
 signal defending()
 
 export var life : int = 3
+
+# The time that the defense command is active
 export var time_defense : float = .25
+
+"""
+For the node that contains the logic for updating the position, etc
+"""
 export var tile_parent : NodePath
 
 var life_current : int = life
+# It's true if the defense command is executed
 var is_defending := false
 var tile
 
@@ -27,7 +34,11 @@ func _ready() -> void:
 	tile = get_node(tile_parent)
 
 
-# @Signal take_damage(damage) 
+# @Signal take_damage(damage)
+"""
+Takes the given damage and substrack it from the `life_current`
+Inside this method it's considered the `is_defending` var
+"""
 func _on_take_damage(damage: int) -> void:
 	if is_defending:
 		return
@@ -36,6 +47,9 @@ func _on_take_damage(damage: int) -> void:
 		life_current = 0
 
 # @Signal battle_end()
+"""
+Disabled the process methods after the battle ends
+"""
 func _on_battle_end() -> void:
 	set_process(false)
 	set_physics_process(false)
