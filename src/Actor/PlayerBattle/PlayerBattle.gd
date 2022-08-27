@@ -75,7 +75,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_defense"):
 		emit_signal("defending")
 
-@Signal set_origin(position)
+# @Signal set_origin(position)
 """
 Updates the value of the variable origin
 """

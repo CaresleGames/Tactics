@@ -18,7 +18,7 @@ func _on_BattleArea_body_entered(body: Node) -> void:
 	"""
 
 	var data = {
-		"pos": body.position,
+		"pos": body.global_position,
 		"node_name": name,
 		"scene": get_tree().current_scene.filename,
 		"trigger": id
