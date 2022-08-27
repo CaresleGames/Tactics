@@ -37,5 +37,6 @@ func _on_BattleArea_body_entered(body: Node) -> void:
 Disabled the collision of the area and hide the object
 """
 func _on_disabled() -> void:
+	print("disabled")
 	collision.set_deferred("disabled", true)
 	hide()

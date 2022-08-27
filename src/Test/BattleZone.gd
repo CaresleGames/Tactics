@@ -75,7 +75,7 @@ func _process(_delta: float) -> void:
 	else:
 		player.emit_signal("battle_end")
 		enemy.emit_signal("battle_end")
-		BattleManager.emit_signal("load_battle_data")
+		BattleManager.emit_signal("change_scene")
 	
 	# @DebugAction
 	if Input.is_action_just_pressed("ui_accept"):
