@@ -5,6 +5,10 @@ This project uses Semantic versioning.
 ## [Unreleased]
 
 ### Added
+
+- Load the battle data after the battle
+- Disable all the previous battles triggered
+
 ### Changed
 ### Deprecated
 ### Removed
