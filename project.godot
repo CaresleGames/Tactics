@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Test/BattleZone.gd"
 }, {
+"base": "CanvasLayer",
+"class": "Dialog",
+"language": "GDScript",
+"path": "res://src/UI/Dialog/Dialog.gd"
+}, {
 "base": "Actor",
 "class": "Enemy",
 "language": "GDScript",
@@ -43,15 +48,28 @@ _global_script_classes=[ {
 "class": "StatsDisplay",
 "language": "GDScript",
 "path": "res://src/UI/Battle/StatsDisplay/StatsDisplay.gd"
+}, {
+"base": "Area2D",
+"class": "TeleportArea",
+"language": "GDScript",
+"path": "res://src/Objects/TeleportArea/TeleportArea.gd"
+}, {
+"base": "Node2D",
+"class": "WorldLevel",
+"language": "GDScript",
+"path": "res://src/Maps/WorldTest/WorldTest.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
 "BattleArea": "",
 "BattleZone": "",
+"Dialog": "",
 "Enemy": "",
 "Player": "",
 "PlayerBattle": "",
-"StatsDisplay": ""
+"StatsDisplay": "",
+"TeleportArea": "",
+"WorldLevel": ""
 }
 
 [application]

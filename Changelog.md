@@ -9,7 +9,22 @@ This project uses Semantic versioning.
 - Load the battle data after the battle
 - Disable all the previous battles triggered
 
+- Scenes:
+  - WorldMap, created from the `TileMap` Node in WorldeTest
+
+- Nodes:
+  - TileMap node in WorldTest (`TileMap2`)
+
+- Sprites:
+  - Player idle sprite
+  - Enemy idle sprite
+  - Tilemap for the world map
+  - Tilemap for the battle zone
+
 ### Changed
+- Sprites:
+  - Tilemap of the `Map` Node in BattleZone
+  - Tilemap of the `TileMap` Node in WorldTest
 ### Deprecated
 ### Removed
 ### Fixed
