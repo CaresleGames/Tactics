@@ -7,23 +7,19 @@ var velocity := Vector2.ZERO
 
 onready var anim : AnimationPlayer = $AnimationPlayer
 onready var anim_tree : AnimationTree = $AnimationTree
+onready var anim_state = anim_tree.get('parameters/playback')
 
 func get_input() -> void:
 	velocity = Vector2.ZERO
 	velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	velocity.y = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
-#	if Input.is_action_pressed("ui_right"):
-#		velocity.x = 1
-#	if Input.is_action_pressed("ui_left"):
-#		velocity.x = -1
-#	if Input.is_action_pressed("ui_up"):
-#		velocity.y = -1
-#	if Input.is_action_pressed("ui_down"):
-#		velocity.y = 1
+	velocity.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+
 	if velocity != Vector2.ZERO:
-		anim_tree.set('parameters/Run/blend_position', velocity)
-	else:
 		anim_tree.set('parameters/Idle/blend_position', velocity)
+		anim_tree.set('parameters/Run/blend_position', velocity)
+		anim_state.travel("Run")
+	else:
+		anim_state.travel("Idle")
 	velocity = velocity.normalized() * speed
 
 
