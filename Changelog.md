@@ -2,13 +2,13 @@
 
 This project uses Semantic versioning.
 
-## [Unreleased]
+## v0.2 - 02-09-2022 
 
 ### Added
 
 - Load the battle data after the battle
 - Disable all the previous battles triggered
-
+- Some sprites for making the prototype a little nice to see
 - Scenes:
   - WorldMap, created from the `TileMap` Node in WorldeTest
 
@@ -25,10 +25,6 @@ This project uses Semantic versioning.
 - Sprites:
   - Tilemap of the `Map` Node in BattleZone
   - Tilemap of the `TileMap` Node in WorldTest
-### Deprecated
-### Removed
-### Fixed
-### Known Issues
 
 ## [v0.1] - 21-08-2022
 
